@@ -19,25 +19,13 @@ BaselineOfTakuzu >> baseline: spec [
 BaselineOfTakuzu >> defineDependencies: spec [
 
 	spec
-		baseline: 'Alexandrie'
-		with: [ spec repository: 'github://pharo-graphics/Alexandrie:8008a3d/src' ].
-
-	spec
-		baseline: 'Bloc'
-		with: [ spec repository: 'github://pharo-graphics/Bloc:2c698bc/src' ].
-
-	spec
 		baseline: 'LevelImporter'
 		with: [
 		spec repository: 'github://Enzo-Demeulenaere/LevelImporter:main' ].
 
 	spec
-		baseline: 'Album'
-		with: [ spec repository: 'github://pharo-graphics/Album:3634b88/src' ].
-
-	spec
 		baseline: 'Toplo'
-		with: [ spec repository: 'github://pharo-graphics/Toplo:672c93b/src' ].
+		with: [ spec repository: 'github://pharo-graphics/Toplo:dev/src' ].
 
 	spec baseline: 'ContainersArray2D' with: [
 		spec repository:
@@ -66,7 +54,7 @@ BaselineOfTakuzu >> definePackages: spec [
 	^ spec
 		  package: 'Takuzu' with: [
 			  spec requires:
-					  #( 'Alexandrie' 'Bloc' 'Album' 'Toplo' 'LevelImporter' 'ContainersArray2D' ) ];
+					  #( 'Toplo' 'LevelImporter' 'ContainersArray2D' ) ];
 		  package: 'Takuzu-Tests' with: [ spec requires: #( 'Takuzu' ) ];
 		  yourself
 ]
