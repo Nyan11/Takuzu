@@ -73,7 +73,7 @@ Takuzu class >> menuHelp [
 	menu label: (ToLabel text: 'Help').
 	menu icon:
 		(ToImage inner: (Smalltalk ui icons iconNamed: #glamorousHelp)).
-	menu whenClickedDo: [ self showHelp ].
+	menu addEventHandlerOn: BlClickEvent do: [ self showHelp ].
 	^ menu
 ]
 
@@ -110,8 +110,8 @@ Takuzu class >> menuLevel [
 			tmp := TFieldElement class selectors select: [ :each |
 				       each = selector ].
 			subMenu addItem:
-				((ToButtonMenuItem new labelText: stream) whenClickedDo: [
-					 TFieldElement openWithModel: (TField perform: selector asSymbol) ]) ].
+				((ToMenuItem new labelText: stream) addEventHandlerOn: BlClickEvent do: [
+					 TFieldElement openWithModel: (TField perform: selector asSymbol) ]; yourself) ].
 		menu addItem: subMenu ].
 
 	^ menu
@@ -126,20 +126,20 @@ Takuzu class >> menuRandom [
 	menu icon:
 		(ToImage inner: (Smalltalk ui icons iconNamed: #solidMenu)).
 	menu addItem:
-		((ToButtonMenuItem new labelText: '4x4') whenClickedDo: [
-			 TFieldElement launch4 ]).
+		((ToMenuItem new labelText: '4x4') addEventHandlerOn: BlClickEvent do: [
+			 TFieldElement launch4 ]; yourself).
 	menu addItem:
-		((ToButtonMenuItem new labelText: '6x6') whenClickedDo: [
-			 TFieldElement launch6 ]).
+		((ToMenuItem new labelText: '6x6') addEventHandlerOn: BlClickEvent do: [
+			 TFieldElement launch6 ]; yourself).
 	"menu addItem:
-		((ToButtonMenuItem new labelText: '8x8') whenClickedDo: [
-			 TFieldElement launch8 ]).
+		((ToMenuItem new labelText: '8x8') addEventHandlerOn: BlClickEvent do: [
+			 TFieldElement launch8 ]; yourself).
 	menu addItem:
-		((ToButtonMenuItem new labelText: '10x10') whenClickedDo: [
-			 TFieldElement launch10 ]).
+		((ToMenuItem new labelText: '10x10') addEventHandlerOn: BlClickEvent do: [
+			 TFieldElement launch10 ]; yourself).
 	menu addItem:
-		((ToButtonMenuItem new labelText: '12x12') whenClickedDo: [
-			 TFieldElement launch12 ])."
+		((ToMenuItem new labelText: '12x12') addEventHandlerOn: BlClickEvent do: [
+			 TFieldElement launch12 ]; yourself)."
 
 	^ menu
 ]
@@ -147,6 +147,7 @@ Takuzu class >> menuRandom [
 { #category : #'as yet unclassified' }
 Takuzu class >> openWithMenuBar [
 
+	<script>
 	| space randomMenu levelMenu helpMenu bar title |
 	randomMenu := self menuRandom.
 	levelMenu := self menuLevel.
